@@ -1,8 +1,7 @@
 Feature: Test login functionality of Swag Labs
 
   Scenario Outline: User logs in with valid credentials
-    Given web browser is open
-    When user is on login page with the given url "https://www.saucedemo.com/v1/"
+    Given user is on login page with the given url "https://www.saucedemo.com/v1/"
     And user enters valid username "<username>"
     And user enters valid password "<password>"
     And user clicks on login button

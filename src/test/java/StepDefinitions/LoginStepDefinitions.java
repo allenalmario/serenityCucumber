@@ -16,13 +16,7 @@ public class LoginStepDefinitions {
 
     LoginPage loginPage;
 
-    @Given("web browser is open")
-    public void web_browser_is_open() {
-//        loginPage = new LoginPage(driver);
-        System.out.println("Placeholder for web browser is open");
-    }
-
-    @When("user is on login page with the given url {string}")
+    @Given("user is on login page with the given url {string}")
     public void user_is_on_login_page_with_given_url(String loginPageUrl) {
         driver.manage().window().maximize();
         driver.get(loginPageUrl);
