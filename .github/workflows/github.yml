@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'
+          cache: maven
       - name: Step 3 - Build with Maven
         #The run keyword tells the job to execute a command on the runner
         run: mvn clean verify
