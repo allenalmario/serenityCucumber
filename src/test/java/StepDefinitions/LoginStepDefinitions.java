@@ -1,14 +1,12 @@
 package StepDefinitions;
 
 import Pages.LoginPage;
-import Utils.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.annotations.Managed;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginStepDefinitions {
 
@@ -48,7 +46,7 @@ public class LoginStepDefinitions {
     public void user_should_be_on_products_page_with_the_given_url(String productsPageUrl) {
 
         Assert.assertTrue(driver.getCurrentUrl().equals(productsPageUrl));
-        WebDriverManager.quitDriver();
+        driver.quit();
 
     }
 }
