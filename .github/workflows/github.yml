@@ -30,3 +30,8 @@ jobs:
       - name: Step 3 - Build with Maven
         #The run keyword tells the job to execute a command on the runner
         run: mvn clean verify
+      - name: Step 4 - Archive Serenity Index HTML
+        uses: actions/upload-artifacts@v2
+        with:
+          name: serenity-index
+          path: target/site/serenity/index.html
