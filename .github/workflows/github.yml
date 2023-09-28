@@ -30,8 +30,32 @@ jobs:
       - name: Step 3 - Build with Maven
         #The run keyword tells the job to execute a command on the runner
         run: mvn clean verify
+        #This is a user-defined name for the step. It indicates that the step is responsible
+        #for archiving the "index.html" file related to the serenity BDD reports
       - name: Step 4 - Archive Serenity Index HTML
+        #This line specifies the actions that's used for this step
+        #uses "upload-artifact" to upload a file or directory
+        #as an artifact that can be accessed later in the workflow or other actions
         uses: actions/upload-artifact@v2
+        #this section begins the list of input parameters for the 'upload-artifact' action
         with:
+          #this parameter specifies the name of the artifact
+          #artifact will be named serenity-index
           name: serenity-index
+          #this parameter specifies the path to the file or directory you want to archive
+          #as the artifact. it points to the index.html file located
+          # in target/site/serenity directory of your project.
+          #this artifact will be archived as the "serenity-index" artifact
           path: target/site/serenity/index.html
+      #this is a step that deploys your serenity reports to github pages
+      - name: Step 5 - Deploy to Github Pages
+        #this line specifies the github actions action that is used for this step. it uses this
+        #action to deploy the reports
+        uses: peaceiris/actions-gh-pages@v3
+        #this section beings the list of input parameters for the action above
+        with:
+          #this parameter provides the github token for authentication
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          #this parameter specifies the directory that contains the serenity reports
+          #the action will deploy the contents of this directory to github pages
+          publish_dir: ./target/site/serenity
